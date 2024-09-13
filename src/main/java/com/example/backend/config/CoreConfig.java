@@ -11,7 +11,7 @@ public class CoreConfig implements WebMvcConfigurer {
 	  @Override
 	    public void addCorsMappings(CorsRegistry registry) {
 	        registry.addMapping("/**")
-	                .allowedOrigins("https://work4-you-frontend.vercel.app") // React app URL
+	                .allowedOrigins("https://work4-you-frontend-np2g8oo2o-anjus-projects-17866cf8.vercel.app") // React app URL
 	                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
 	                .allowedHeaders("*")
 	                .allowCredentials(true);
