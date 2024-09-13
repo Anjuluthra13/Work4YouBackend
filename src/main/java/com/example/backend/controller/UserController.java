@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 
 @RestController
-@CrossOrigin(origins = "https://work4-you-frontend.vercel.app", allowCredentials = "true")
+@CrossOrigin(origins = "https://work4-you-frontend.vercel.app")
 @RequestMapping("/api/auth")
 public class UserController {
 

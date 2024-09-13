@@ -2,10 +2,9 @@ package com.example.backend.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.filter.CorsFilter;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import java.util.Arrays;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
 @Configuration
 public class CoreConfig implements WebMvcConfigurer {
 
@@ -17,9 +16,6 @@ public class CoreConfig implements WebMvcConfigurer {
 	                .allowedHeaders("*")
 	                .allowCredentials(true);
 
-				UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-				source.registerCorsConfiguration("/**", config);
 			
-				CorsFilter(source);
 	    }
 	}
