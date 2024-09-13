@@ -20,7 +20,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "https://work4-you-frontend.vercel.app", allowCredentials = "true")
 @RequestMapping("/api/auth")
 public class UserController {
 
