@@ -65,7 +65,10 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowCredentials(true);
-        configuration.addAllowedOrigin("https://work4-you-frontend.vercel.app"); // Allow requests from your frontend
+        configuration.setAllowedOrigins(Arrays.asList(
+            "https://work4-you-frontend.vercel.app",
+            "https://supreme-space-pancake-j6gjjw579r635qqw-3000.app.github.dev"
+        ));
         configuration.addAllowedHeader("*"); // Allow all headers
         configuration.addAllowedMethod("*"); // Allow all HTTP methods (GET, POST, etc.)
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
