@@ -16,6 +16,7 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import com.example.backend.service.UserDetailsServiceImpl;
 import com.example.backend.config.JwtRequestFilter;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -65,10 +66,10 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowCredentials(true);
-        configuration.setAllowedOrigins(Arrays.asList(
-            "https://work4-you-frontend.vercel.app",
-            "https://supreme-space-pancake-j6gjjw579r635qqw-3000.app.github.dev"
-        ));
+        configuration.setAllowedOrigins(List.of(
+                "https://work4-you-frontend.vercel.app",
+                "https://supreme-space-pancake-j6gjjw579r635qqw-3000.app.github.dev"
+            ));
         configuration.addAllowedHeader("*"); // Allow all headers
         configuration.addAllowedMethod("*"); // Allow all HTTP methods (GET, POST, etc.)
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
