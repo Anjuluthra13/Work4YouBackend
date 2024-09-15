@@ -11,13 +11,13 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime; // Import for LocalDateTime
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
 @RestController
 @RequestMapping("/api/feedback")
-@CrossOrigin(origins = "http://localhost:3000") // Ensure CORS is enabled
+@CrossOrigin(origins = "http://localhost:3000")
 public class FeedbackController {
 
     private static final Logger logger = LoggerFactory.getLogger(FeedbackController.class);
@@ -29,11 +29,10 @@ public class FeedbackController {
     public ResponseEntity<?> createFeedback(@RequestBody Feedback feedback) {
         try {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-            String email = authentication.getName(); // Get the authenticated user's email
+            String email = authentication.getName();
             logger.info("Creating feedback for user: {}", email);
             
-            // Set the current date and time for the createdAt field
-            feedback.setCreatedAt(LocalDateTime.now()); 
+            feedback.setCreatedAt(LocalDateTime.now());
 
             Feedback savedFeedback = feedbackService.saveFeedback(feedback);
             return ResponseEntity.ok(savedFeedback);
@@ -48,10 +47,8 @@ public class FeedbackController {
     public ResponseEntity<?> getAllFeedbacks() {
         try {
             List<Feedback> feedbacks = feedbackService.getAllFeedbacks();
-            logger.info("Retrieved all feedbacks");
             return ResponseEntity.ok(feedbacks);
         } catch (Exception e) {
-            logger.error("Error retrieving feedbacks: ", e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                                  .body(Map.of("error", "Error retrieving feedbacks: " + e.getMessage()));
         }
