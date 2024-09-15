@@ -5,27 +5,29 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 
-@Document(collection = "feedbacks") // MongoDB collection name
+@Document(collection = "feedbacks")
 public class Feedback {
     @Id
-    private String id; // Auto-generated ID
+    private String id;
     private String name;
     private String email;
     private String phone;
     private String message;
-    private LocalDateTime createdAt; // New field for the timestamp
+    private int rating; // Add rating as an integer
+    private LocalDateTime createdAt;
 
     // Constructors
     public Feedback() {
-        this.createdAt = LocalDateTime.now(); // Set the timestamp when the object is created
+        this.createdAt = LocalDateTime.now();
     }
 
-    public Feedback(String name, String email, String phone, String message) {
+    public Feedback(String name, String email, String phone, String message, int rating) {
         this.name = name;
         this.email = email;
         this.phone = phone;
         this.message = message;
-        this.createdAt = LocalDateTime.now(); // Set the timestamp when the object is created
+        this.rating = rating;
+        this.createdAt = LocalDateTime.now();
     }
 
     // Getters and Setters
@@ -67,6 +69,14 @@ public class Feedback {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
     }
 
     public LocalDateTime getCreatedAt() {
