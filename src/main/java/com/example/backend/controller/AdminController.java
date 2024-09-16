@@ -14,10 +14,10 @@ public class AdminController {
 
     @PostMapping("/signin")
     public ResponseEntity<?> loginAdmin(@RequestBody AdminLoginRequest adminLoginRequest) {
-        boolean isLoggedIn = adminService.loginAdmin(adminLoginRequest.getEmail(), adminLoginRequest.getPassword());
+        String token = adminService.loginAdmin(adminLoginRequest.getEmail(), adminLoginRequest.getPassword());
 
-        if (isLoggedIn) {
-            return ResponseEntity.ok("Login Successful");
+        if (token != null) {
+            return ResponseEntity.ok(new JwtResponse(token)); // Return the token
         } else {
             return ResponseEntity.status(400).body("Invalid Credentials");
         }
@@ -43,6 +43,19 @@ public class AdminController {
 
         public void setPassword(String password) {
             this.password = password;
+        }
+    }
+
+    // DTO for JWT response
+    public static class JwtResponse {
+        private String token;
+
+        public JwtResponse(String token) {
+            this.token = token;
+        }
+
+        public String getToken() {
+            return token;
         }
     }
 }
