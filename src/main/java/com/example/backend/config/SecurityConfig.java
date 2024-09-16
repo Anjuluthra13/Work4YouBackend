@@ -45,7 +45,7 @@ public class SecurityConfig {
             .and()
             .csrf().disable()
             .authorizeRequests()
-            .requestMatchers("/api/auth/register", "/api/auth/login", "/error", "/admin/**", "/api/feedback/**","/api/hire","/api/local","/api/book-now").permitAll() // Allow registration, login, and error page
+            .requestMatchers("/api/auth/register", "/api/auth/login", "/error", "/admin/**", "/api/feedback/**","/api/hire","/api/local","/api/book-now","/api/orders").permitAll() // Allow registration, login, and error page
             .anyRequest().authenticated() // All other endpoints require authentication
             .and()
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS); // No session creation (JWT)
