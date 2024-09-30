@@ -68,7 +68,7 @@ public class SecurityConfig {
         configuration.setAllowCredentials(true);
         configuration.setAllowedOrigins(List.of(
                 "https://work4-you-frontend.vercel.app",
-                "https://supreme-space-pancake-j6gjjw579r635qqw-3000.app.github.dev"
+                "https://vendor-f.vercel.app"
             ));
         configuration.addAllowedHeader("*"); // Allow all headers
         configuration.addAllowedMethod("*"); // Allow all HTTP methods (GET, POST, etc.)
